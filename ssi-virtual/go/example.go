@@ -1,6 +1,7 @@
 package main
 
 import (
+	"fmt"
 	"net/http"
 
 	"github.com/gin-gonic/gin"
@@ -47,14 +48,14 @@ func main() {
 		if exist {
 			switch v {
 			case int(Home):
-				displaymode = "Home"
+				displaymode = "home"
 			case int(Register):
-				displaymode = "Register"
+				displaymode = "register"
 			case int(Download):
-				displaymode = "Download"
+				displaymode = "download"
 			}
 		}
-		c.String(http.StatusOK, "Hello %s", displaymode)
+		c.String(http.StatusOK, fmt.Sprintf("%s-%%", site, displaymode))
 	})
 	router.Run(":8080")
 }

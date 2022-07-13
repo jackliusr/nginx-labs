@@ -1,0 +1,25 @@
+= dynamic ssi lab--virtual include
+
+
+Virtual include only include the reponse from virtual path.  What should I do if I want to include files based on the response?  Currently I can think of two ways to do that.
+
+* lua:  https://stackoverflow.com/questions/46151554/openresty-make-an-http-call-with-lua-and-return-its-parsed-result[Openresty: Make an http call with lua and return its parsed result] 
+* redis 
+
+== test 
+
+[source,bash]
+----
+
+docker compose up
+
+# test existing
+
+curl   --resolve 1203.com:8080:127.0.0.1 http://1203.com:8080/index.html
+curl   --resolve 1303.com:8080:127.0.0.1 http://1303.com:8080/index.html
+curl   --resolve 1403.com:8080:127.0.0.1 http://1403.com:8080/index.html
+
+# test not existing
+curl   --resolve 1209.com:8080:127.0.0.1 http://1209.com:8080/index.html
+
+----
