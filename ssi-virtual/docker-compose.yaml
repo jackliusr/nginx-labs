@@ -1,0 +1,19 @@
+version: "3"
+services:
+   nginx:
+      container_name: nginx
+      image: nginx:alpine
+      ports:
+      - 8080:80
+      networks:
+      - overlay
+      volumes:
+        - ./nginx:/etc/nginx/conf.d/
+        - ./html:/var/www/html/
+   displaymode:
+      build: ./go
+      image: nginx-displaymode
+      networks:
+      - overlay
+networks:
+   overlay:
